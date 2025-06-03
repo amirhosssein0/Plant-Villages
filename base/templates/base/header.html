@@ -1,0 +1,22 @@
+{% load static %}
+<header class="main-header">
+    <div class="navbar-container">
+        <a href="/" class="logo-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/2909/2909765.png" alt="Plant Health Logo" class="logo-img">
+            <span class="site-title">Plant Health App</span>
+        </a>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="{% url 'pages:home' %}">Home</a></li>
+                <li><a href="{% url 'pages:about' %}">About</a></li>
+                <li><a href="{% url 'pages:contact-us' %}">Contact Us</a></li>
+                <li><a href="{% url 'treatment:treatment' %}">Treatment</a></li>
+            </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header> 

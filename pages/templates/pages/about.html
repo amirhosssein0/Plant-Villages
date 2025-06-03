@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<section class="about-hero">
+    <h1>About Plant Health App</h1>
+    <p class="about-tagline">Empowering plant lovers and growers with AI-driven plant care and diagnosis.</p>
+</section>
+<section class="about-mission">
+    <h2>Our Mission</h2>
+    <p>We aim to revolutionize plant care by providing instant, accurate, and accessible plant health diagnostics and treatment recommendations. Whether you are a home gardener, a professional grower, or a plant enthusiast, our platform helps you keep your plants healthy and thriving.</p>
+</section>
+<section class="about-team">
+    <h2>Meet the Team</h2>
+    <div class="team-list">
+        <div class="team-member">
+            <img src="{% static 'base/img/amir.jpg' %}" alt="Team Member 1">
+            <h3>Amir Hosein</h3>
+            <p>Founder</p>
+        </div>
+        <div class="team-member">
+            <img src="{% static 'base/img/arian.jpg' %}" alt="Team Member 2">
+            <h3>Arain</h3>
+            <p>Deep Learning Engineer</p>
+        </div>
+        <div class="team-member">
+            <img src="{% static 'base/img/amir.jpg' %}" alt="Team Member 3">
+            <h3>Amir Hosein</h3>
+            <p>Full Stack Developer</p>
+        </div>
+    </div>
+</section>
+<section class="about-tech">
+    <h2>Our Technology</h2>
+    <ul class="tech-list">
+        <li><strong>AI-Powered Diagnosis:</strong> Advanced image recognition and machine learning for plant disease detection.</li>
+        <li><strong>Comprehensive Database:</strong> Up-to-date information on plant illnesses, symptoms, and treatments.</li>
+        <li><strong>User-Friendly Interface:</strong> Simple, intuitive, and accessible for all users.</li>
+        <li><strong>Secure & Private:</strong> Your data and photos are protected with industry-standard security.</li>
+    </ul>
+</section>
+<section class="about-contact">
+    <h2>Contact Us</h2>
+    <p>Have questions, suggestions, or want to collaborate? Reach out at <a href="mailto:support@planthealth.com">support@planthealth.com</a>.</p>
+</section>
+{% endblock %}

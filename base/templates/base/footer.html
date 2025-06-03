@@ -1,0 +1,30 @@
+{% load static %}
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <img src="https://cdn-icons-png.flaticon.com/512/2909/2909765.png" alt="Plant Health Logo" class="footer-logo">
+            <span class="footer-title">Plant Health App</span>
+            <p class="footer-tagline">Your AI-powered plant doctor.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'pages:home' %}">Home</a></li>
+                <li><a href="{% url 'pages:about' %}">About</a></li>
+                <li><a href="{% url 'pages:contact-us' %}">Contact Us</a></li>
+                <li><a href="{% url 'treatment:treatment' %}">Treatment</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="background:#E1306C; padding:4px; border-radius:50%;"></a>
+                <a href="#" title="Twitter"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" style="background:#1DA1F2; padding:4px; border-radius:50%;"></a>
+                <a href="#" title="Telegram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" style="background:#229ED9; padding:4px; border-radius:50%;"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Plant Health App. All rights reserved.</p>
+    </div>
+</footer> 

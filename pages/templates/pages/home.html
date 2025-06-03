@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Plant Health App</h1>
+        <p>Upload your plant photo and get instant diagnosis and treatment solutions!</p>
+        <a href="/treatment/" class="cta-btn">Diagnose My Plant</a>
+    </div>
+    <div class="hero-images">
+        <img src="https://dombarg.com/wp-content/uploads/2023/05/%D8%AF%DB%8C%D9%81%D9%86-%D8%A8%D8%A7%D8%AE%DB%8C%D8%A7.jpg" alt="Healthy Plant">
+        <img src="https://vipshop.flowers/wp-content/uploads/2020/09/Aphelandra.jpg" alt="Sick Plant">
+        <img src="https://www.toptoop.ir/files/images/01-tir/gol-tabiei.jpg" alt="Plant Diagnosis">
+    </div>
+</section>
+<section class="features">
+    <h2>How It Works</h2>
+    <div class="feature-list">
+        <div class="feature">
+            <img src="https://cdn-icons-png.freepik.com/256/10024/10024501.png?semt=ais_hybrid" alt="Upload">
+            <h3>1. Upload Photo</h3>
+            <p>Take a clear photo of your plant and upload it to our system.</p>
+        </div>
+        <div class="feature">
+            <img src="https://parspng.com/wp-content/uploads/2024/12/aipng.parspng.com-4-300x300.png" alt="AI Diagnosis">
+            <h3>2. AI Diagnosis</h3>
+            <p>Our AI analyzes your plant and detects possible problems or illnesses.</p>
+        </div>
+        <div class="feature">
+            <img src="https://pngimg.com/uploads/pills/pills_PNG16515.png" alt="Treatment">
+            <h3>3. Get Treatment</h3>
+            <p>Receive recommended medicines and treatment solutions instantly.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

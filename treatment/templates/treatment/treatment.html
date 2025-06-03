@@ -1,0 +1,110 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<section class="treatment-hero">
+    <div class="treatment-hero-content">
+        <div class="treatment-hero-text">
+            <h1><img src="https://cdn-icons-png.flaticon.com/512/2909/2909765.png" alt="Plant Icon" class="plant-icon"> Plant Diagnosis & Treatment</h1>
+            <p class="treatment-tagline">Upload a photo of your plant and get instant diagnosis and treatment suggestions (coming soon!).</p>
+        </div>
+        <div class="treatment-hero-image">
+            <img src="https://golbama.com/blog/wp-content/uploads/2021/06/%DA%AF%DB%8C%D8%A7%D9%87-%D8%A8%D8%B1%DA%AF-%D8%A7%D9%86%D8%AC%DB%8C%D8%B1%DB%8C-Variegated-Monstresa-Delicosa.jpg" alt="Sample Plant" class="sample-plant-img">
+        </div>
+    </div>
+</section>
+<section class="treatment-upload">
+    <div class="treatment-form-container">
+        <h2>Upload Your Plant Photo</h2>
+        <p class="upload-instructions">Accepted formats: JPG, PNG. Max size: 5MB.</p>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form class="treatment-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Upload Icon" class="upload-icon"> Upload Photo</button>
+        </form>
+        <div class="photo-sources">
+            <p>Need plant photos? Try <a href="https://unsplash.com/s/photos/plant" target="_blank">Unsplash Plants</a> or <a href="https://www.pexels.com/search/plant/" target="_blank">Pexels Plants</a>.</p>
+        </div>
+        {% if task_id %}
+        <div id="diagnosis-status" class="diagnosis-status">
+            <div class="spinner"></div>
+            <p>Processing your plant photo... Please wait.</p>
+        </div>
+        <script>
+        function pollResult() {
+            fetch("{% url 'treatment:treatment-result' task_id %}")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'done') {
+                        let html = '<h3>Diagnosis Result:</h3>';
+                        if (Array.isArray(data.result)) {
+                            html += '<ul class="diagnosis-list">';
+                            data.result.forEach(function(r) {
+                                html += `<li><span class="diagnosis-label">${r.label}</span> <span class="diagnosis-confidence">${(r.score*100).toFixed(2)}%</span></li>`;
+                            });
+                            html += '</ul>';
+                        } else {
+                            html += '<pre>' + JSON.stringify(data.result, null, 2) + '</pre>';
+                        }
+                        document.getElementById('diagnosis-status').innerHTML = html;
+                    } else {
+                        setTimeout(pollResult, 2000);
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('diagnosis-status').innerHTML = '<div class="alert alert-danger">An error occurred while fetching the diagnosis result. Please try again later.</div>';
+                });
+        }
+        pollResult();
+        </script>
+        <style>
+        .spinner {
+            border: 4px solid #e0e0e0;
+            border-top: 4px solid #2e7d32;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1em auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .diagnosis-list {
+            list-style: none;
+            padding: 0;
+        }
+        .diagnosis-list li {
+            background: #e8f5e9;
+            margin-bottom: 0.5em;
+            padding: 0.7em 1em;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.08em;
+        }
+        .diagnosis-label {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .diagnosis-confidence {
+            color: #388e3c;
+        }
+        .alert-danger {
+            background: #ffcdd2;
+            color: #b71c1c;
+            padding: 1em;
+            border-radius: 8px;
+            margin-top: 1em;
+        }
+        </style>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
