@@ -29,7 +29,7 @@ We used the **MobileNetV2** model, which is lightweight, fast, and suitable for 
 
 ## 🧑‍🤝‍🧑 Team Name
 
-> **Team Name: [Doustack](https://github.com/doustack)**
+> **My Team Name: [Doustack](https://github.com/doustack)**
 
 ## ⚙️ Installation & Setup
 
