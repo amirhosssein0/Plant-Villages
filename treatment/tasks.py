@@ -9,6 +9,7 @@ def classify_plant_image(image_path):
         from transformers import pipeline
         from PIL import Image
         import os
+        from pathlib import Path
 
         # Check if file exists
         if not os.path.exists(image_path):
@@ -16,7 +17,9 @@ def classify_plant_image(image_path):
             return {'error': 'Image file not found'}
 
         # Check if model directory exists
-        model_path = os.path.join('treatment', 'model', 'plantvillage-model')
+        # Resolve absolute model path relative to project root
+        base_dir = Path(__file__).resolve().parents[1]
+        model_path = str(base_dir / 'model' / 'plantvillage-model')
         if not os.path.exists(model_path):
             logger.error(f"Model directory not found: {model_path}")
             return {'error': 'Model not found'}
